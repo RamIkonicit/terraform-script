@@ -3,7 +3,7 @@ variable "subnet_id" {
 }
 
 variable "ami_id" {
-  default = "ami-0f4715e000cae4b68"
+  default = "ami-00138b07206d4ceaf"
 }
 
 variable "jenkins_instance_type" {
