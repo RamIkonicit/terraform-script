@@ -3,15 +3,15 @@ variable "subnet_id" {
 }
 
 variable "ami_id" {
-  default = "ami-00138b07206d4ceaf"
+  default = "ami-0e64de9e5b54c8335"
 }
 
 variable "jenkins_instance_type" {
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "micro_instance_type" {
-  default = "t2.medium"
+  default = "t2.xlarge"
 }
 
 variable "availability_zones" {
@@ -27,11 +27,11 @@ variable "add_public_ip_address" {
 }
 
 variable "root_volume_size" {
-  default = "8"
+  default = "300"
 }
 
 variable "swap_volume_size" {
-  default = "8"
+  default = "20"
 }
 
 variable "swap_volume_devicename" {
