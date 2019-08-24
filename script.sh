@@ -5,14 +5,10 @@ echo $(blkid -s UUID /dev/xvdb | sed -e 's/\"//g' | awk '{printf $2}') none swap
 mount -a
 swapon -a
 yum install -y git
-rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
-yum install -y jenkins
-systemctl start jenkins
-systemctl enable jenkins
-sudo yum install -y java-1.8.0
-sudo alternatives --config java
-sudo yum -y install maven
-sudo yum -y install nodejs
-npm install -g @angular/cli
-
-
+yum install vim curl unzip wget -y
+yum install java-11-openjdk -y
+yum install nexus -y
+curl -s https://raw.githubusercontent.com/linuxautomations/nexus/master/install.sh | sudo bash
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.1.zip
+unzip sonarqube-7.9.1.zip
+mv sonarqube-7.9.1 sonarqube

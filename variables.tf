@@ -2,8 +2,16 @@ variable "subnet_id" {
         default = "subnet-08f84961347b05486"
 }
 
+variable "micro_subnet_id" {
+        default = "subnet-08f84961347b05486"
+}
+
 variable "ami_id" {
   default = "ami-0e64de9e5b54c8335"
+}
+
+variable "micro_ami_id" {
+  default = "ami-0a5b62d9450002c94"
 }
 
 variable "jenkins_instance_type" {
@@ -18,7 +26,15 @@ variable "availability_zones" {
   default = "us-east-2a"
 }
 
+variable "micro_availability_zones" {
+  default = "us-east-2a"
+}
+
 variable "key" {
+  default = "tracrat-prod-config"
+}
+
+variable "micro_key" {
   default = "tracrat-prod-config"
 }
 
@@ -27,11 +43,11 @@ variable "add_public_ip_address" {
 }
 
 variable "root_volume_size" {
-  default = "300"
+  default = "8"
 }
 
 variable "swap_volume_size" {
-  default = "20"
+  default = "8"
 }
 
 variable "swap_volume_devicename" {
@@ -47,5 +63,9 @@ variable "micro_hostname" {
 }
 
 variable "vpc_id" {
+  default = "vpc-0c4966f88f56a75ac"
+}
+
+variable "micro_vpc_id" {
   default = "vpc-0c4966f88f56a75ac"
 }

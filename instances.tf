@@ -53,6 +53,20 @@ ingress {
 }
 
 ingress {
+        protocol = "tcp"
+        from_port   = "9000"
+        to_port     = "9000"
+        cidr_blocks = ["18.223.240.65/32"]
+}
+
+ingress {
+        protocol = "tcp"
+        from_port   = "8080"
+        to_port     = "8080"
+        cidr_blocks = ["18.223.240.65/32"]
+}
+
+ingress {
         from_port = "80"
         to_port = "80"
         protocol = "tcp"
@@ -89,24 +103,24 @@ egress {
  }
 
 resource "aws_instance" "micro" {
-  ami = "${var.ami_id}"
+  ami = "${var.micro_ami_id}"
   instance_type = "${var.micro_instance_type}"
-  availability_zone = "${var.availability_zones}"
+  availability_zone = "${var.micro_availability_zones}"
   security_groups = ["${aws_security_group.micro_security_group.id}"]
-  subnet_id = "${var.subnet_id}"
+  subnet_id = "${var.micro_subnet_id}"
   user_data = "${file("script1.sh")}"
   associate_public_ip_address = "${var.add_public_ip_address}"
   tags = {
     Name = "${var.micro_hostname}"
        }
-  key_name = "${var.key}"
+  key_name = "${var.micro_key}"
   root_block_device {
     volume_size           = "${var.root_volume_size}"
   }
 }
 
 resource "aws_ebs_volume" "microvolume" {
-    availability_zone = "${var.availability_zones}"
+    availability_zone = "${var.micro_availability_zones}"
     size = "${var.swap_volume_size}"
 }
 
@@ -128,7 +142,7 @@ resource "aws_eip_association" "eip_assocc" {
 resource "aws_security_group" "micro_security_group" {
         name = "micro security group"
         description = "This is a Micro Services security group"
-        vpc_id = "${var.vpc_id}"
+        vpc_id = "${var.micro_vpc_id}"
 
 ingress {
         protocol = "tcp"
@@ -174,6 +188,20 @@ ingress {
 ingress {
         from_port = "1433"
         to_port = "1433"
+        protocol = "tcp"
+        cidr_blocks = ["18.223.240.65/32"]
+}
+
+ingress {
+        from_port = "8089"
+        to_port = "8089"
+        protocol = "tcp"
+        cidr_blocks = ["18.223.240.65/32"]
+}
+
+ingress {
+        from_port = "9000"
+        to_port = "9000"
         protocol = "tcp"
         cidr_blocks = ["18.223.240.65/32"]
 }
