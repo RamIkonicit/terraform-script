@@ -7,7 +7,7 @@ variable "micro_subnet_id" {
 }
 
 variable "ami_id" {
-  default = "ami-0e64de9e5b54c8335"
+  default = "ami-0211747e124a610e1"
 }
 
 variable "micro_ami_id" {
@@ -43,7 +43,11 @@ variable "add_public_ip_address" {
 }
 
 variable "root_volume_size" {
-  default = "8"
+  default = "10"
+}
+
+variable "micro_root_volume_size" {
+  default = "110"
 }
 
 variable "swap_volume_size" {
