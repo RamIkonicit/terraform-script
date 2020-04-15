@@ -7,7 +7,7 @@ variable "micro_subnet_id" {
 }
 
 variable "ami_id" {
-  default = "ami-0211747e124a610e1"
+  default = "ami-0fc20dd1da406780b"
 }
 
 variable "micro_ami_id" {
