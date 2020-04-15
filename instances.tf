@@ -7,7 +7,7 @@ resource "aws_instance" "terraform-ec2-server" {
   ami = "${var.ami_id}"
   instance_type = "${var.jenkins_instance_type}"
   availability_zone = "${var.availability_zones}"
-  security_groups = ["${aws_security_group.jenkins_security_group.id}"]
+  security_groups = ["${aws_security_group.terraform-ec2-server_security_group.id}"]
   subnet_id = "${var.subnet_id}"
   user_data = "${file("script.sh")}"
   associate_public_ip_address = "${var.add_public_ip_address}"
@@ -28,21 +28,21 @@ resource "aws_ebs_volume" "swapvolume" {
 resource "aws_volume_attachment" "ebs_swap" {
   device_name = "${var.swap_volume_devicename}"
   volume_id   = "${aws_ebs_volume.swapvolume.id}"
-  instance_id = "${aws_instance.jenkins.id}"
+  instance_id = "${aws_instance.terraform-ec2-server.id}"
 }
 
-resource "aws_eip" "eip_new" {
-  vpc = true
-}
+#resource "aws_eip" "eip_new" {
+ # vpc = true
+#}
 
 #resource "aws_eip_association" "eip_assoc" {
  # instance_id   = "${aws_instance.jenkins.id}"
  # allocation_id = "${aws_eip.eip_new.id}"
 #}
 
-resource "aws_security_group" "jenkins_security_group" {
-        name = "jenkins security group"
-        description = "This is a Jenkins Instance security group"
+resource "aws_security_group" "terraform-ec2-server_security_group" {
+        name = "terraform-ec2-server security group"
+        description = "This is a terraform-ec2-server Instance security group"
         vpc_id = "${var.vpc_id}"
 
 ingress {
@@ -102,7 +102,7 @@ egress {
 }
  }
 
-output "jenkins_ip_is" {
-  value = "${aws_eip.eip_new.public_ip}"
+output "terraform-ec2-server_ip_is" {
+  value = "${var.add_public_ip_address}"
 }
 
