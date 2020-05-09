@@ -5,12 +5,12 @@ provider "aws" {
       secret_key = "PazdV2Ddo0ioIs89vnJCp2mBC2q9VhyPSD/nVIuN"
 }
 
-resource "aws_instance" "terraform-ec2-server" {
+resource "aws_instance" "tracrat-dev-server" {
   ami = "${var.ami_id}"
-  instance_type = "${var.jenkins_instance_type}"
+  instance_type = "${var.micro_instance_type}"
   availability_zone = "${var.availability_zones}"
   security_groups = ["${aws_security_group.terraform-ec2-server_security_group.id}"]
-  subnet_id = "${var.subnet_id}"
+  #subnet_id = "${var.subnet_id}"
   user_data = "${file("script.sh")}"
   associate_public_ip_address = "${var.add_public_ip_address}"
   tags = {
