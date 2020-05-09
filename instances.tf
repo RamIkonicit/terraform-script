@@ -1,6 +1,8 @@
 provider "aws" {
-        shared_credentials_file = "/tmp/credentials"
-        region     = "us-east-2"
+      profile    = "default"
+      region     = "us-east-2"
+      access_key = "AKIATP7GQV7UZ33BEU7X"
+      secret_key = "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"
 }
 
 resource "aws_instance" "terraform-ec2-server" {
