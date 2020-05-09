@@ -7,7 +7,7 @@ provider "aws" {
 
 resource "aws_instance" "tracrat-dev-server" {
   ami = "${var.ami_id}"
-  instance_type = "${var.micro_instance_type}"
+  instance_type = "${var.dev_instance_type}"
   availability_zone = "${var.availability_zones}"
   security_groups = ["${aws_security_group.terraform-ec2-server_security_group.id}"]
   #subnet_id = "${var.subnet_id}"
@@ -20,17 +20,6 @@ resource "aws_instance" "tracrat-dev-server" {
   root_block_device {
     volume_size           = "${var.root_volume_size}"
   }
-}
-
-resource "aws_ebs_volume" "swapvolume" {
-    availability_zone = "${var.availability_zones}"
-    size = "${var.swap_volume_size}"
-}
-
-resource "aws_volume_attachment" "ebs_swap" {
-  device_name = "${var.swap_volume_devicename}"
-  volume_id   = "${aws_ebs_volume.swapvolume.id}"
-  instance_id = "${aws_instance.terraform-ec2-server.id}"
 }
 
 #resource "aws_eip" "eip_new" {
