@@ -11,7 +11,7 @@ resource "aws_instance" "tracrat-dev-server" {
   availability_zone = "${var.availability_zones}"
   security_groups = ["${aws_security_group.terraform-ec2-server_security_group.id}"]
   #subnet_id = "${var.subnet_id}"
-  user_data = "${file("script.sh")}"
+  user_data = "${file("script1.sh")}"
   associate_public_ip_address = "${var.add_public_ip_address}"
   tags = {
     Name = "${var.hostname}"
