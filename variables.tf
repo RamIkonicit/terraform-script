@@ -7,14 +7,10 @@ variable "micro_subnet_id" {
 }
 
 variable "ami_id" {
-  default = "ami-0fc20dd1da406780b"
-}
-
-variable "micro_ami_id" {
   default = "ami-0a5b62d9450002c94"
 }
 
-variable "micro_instance_type" {
+variable "dev_instance_type" {
   default = "t2.micro"
 }
 
