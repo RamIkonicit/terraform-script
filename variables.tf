@@ -15,11 +15,7 @@ variable "micro_ami_id" {
 }
 
 variable "jenkins_instance_type" {
-  default = "t2.medium"
-}
-
-variable "micro_instance_type" {
-  default = "t2.xlarge"
+  default = "t2.micro"
 }
 
 variable "availability_zones" {
@@ -31,11 +27,11 @@ variable "micro_availability_zones" {
 }
 
 variable "key" {
-  default = "tracrat-prod-config"
+  default = "tracrat-dev"
 }
 
 variable "micro_key" {
-  default = "tracrat-prod-config"
+  default = "tracrat-dev"
 }
 
 variable "add_public_ip_address" {
