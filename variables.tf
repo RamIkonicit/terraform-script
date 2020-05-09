@@ -14,7 +14,7 @@ variable "micro_ami_id" {
   default = "ami-0a5b62d9450002c94"
 }
 
-variable "jenkins_instance_type" {
+variable "micro_instance_type" {
   default = "t2.micro"
 }
 
@@ -55,11 +55,11 @@ variable "swap_volume_devicename" {
 }
 
 variable "hostname" {
- default = "jenkins"
+ default = "tracrat-dev-server"
 }
 
 variable "micro_hostname" {
- default = "micro-services"
+ default = "tracrat-dev-server"
 }
 
 variable "vpc_id" {
