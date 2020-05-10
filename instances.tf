@@ -1,8 +1,8 @@
 provider "aws" {
       profile    = "default"
       region     = "us-east-2"
-      access_key = "AKIATP7GQV7UZ33BEU7X"
-      secret_key = "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"
+      access_key = "****"
+      secret_key = "****"
 }
 
 resource "aws_instance" "tracrat-dev-server" {
